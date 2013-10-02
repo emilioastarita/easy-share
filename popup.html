@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Easy Share Extension</title>
+    <link href="popup.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="">
+        <h1>Easy Share Extension</h1>
+      </div>
+      <div class="form-item">
+        <input id="url" name="url" type="text" value="" placeholder="Url" />
+      </div>
+
+      <div class="form-item">
+        <input id="pageTitle" name="pageTitle" type="text" value="" placeholder="Page Title" />
+      </div>
+      <h3>Choose services to share:</h3>
+      <div class="services">
+        <div data-sharer="gplus" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="gplus.png" />
+        </div>
+        <div data-sharer="fb" class="js-share-on ">
+          <div class="inactive"></div>
+          <img src="fb.png" />
+        </div>
+        <div data-sharer="twitter" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="twitter.png" />
+        </div>
+        <div data-sharer="gmail" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="gmail.png" />
+        </div>
+        <div data-sharer="linkedin" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="linkedin.png" />
+        </div>
+        <div data-sharer="tumblr" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="tumblr.png" />
+        </div>
+        <div data-sharer="pinterest" class="js-share-on">
+          <div class="inactive"></div>
+          <img src="pinterest.png" />
+        </div>
+      </div>
+      <div class="clear" />
+      <button class="button" id="shareNow">Share</button>
+      <p class="thanks">Thaks for using this app if you like please rate it in the <a target="_blank" href="https://chrome.google.com/webstore/detail/easy-share/ogeflpmllfpecnnlkoifcolpcdpdojbd">Chrome Store</a>.</p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

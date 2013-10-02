@@ -1,0 +1,115 @@
+/**
+ * Copyright (c) 2011 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+@font-face {
+    font-family: Roboto-Thin;
+    src: url('Roboto/Roboto-Thin.ttf');
+}
+
+body {
+  font-family: Roboto-Thin;
+  background: url(icon2.png?v=1) no-repeat 330px 12px #5CACE2;
+  margin: 0px;
+  padding: 5px;
+  color: #FFF;
+}
+.container {
+    margin: 0 20px 20px 20px;
+    
+}
+
+input[type=text] {
+  font-family: Roboto-Thin;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  background: #fff;
+  border: none;
+  color: #444;
+  outline: none;
+  font-size: 18px;
+  font-weight: normal;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #DDD;
+}
+.services {
+    width: 430px;
+    margin-bottom: 95px;
+}
+h3 {
+    margin-bottom: 5px;
+}
+.js-share-on img {
+  width: 90px;
+  height: 90px;
+}
+.js-share-on {
+    position: relative;
+    display: block;
+    float: left;
+    line-height: 45px;
+    height: 45px;
+    width: 45px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+.js-share-on img {
+    display: block;
+    position: absolute;
+    margin:0;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+
+}
+.js-share-on.yes {
+
+}
+.js-share-on.yes .inactive {
+    display: none;
+}
+.js-share-on .inactive {
+    position: absolute;
+    margin:0;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    z-index: 100;
+    background: rgba(0,0,0, 0.5);
+}
+.clear {
+    clear: both;
+}
+
+.button {
+    background: #C1382A;
+    cursor: pointer;
+    border: none;
+    display: block;
+    height: 40px;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+  	-webkit-transition: all 0.15s linear;
+	  -moz-transition: all 0.15s linear;
+	  transition: all 0.15s linear;
+    font-size: 19px;
+}
+
+.button:hover {
+    background: #E74C3C;
+}
+.thanks {
+    text-align: right;
+    color: #FFF;
+    font-size: 13px;
+}
+a {
+    color: #FFF;
+    font-weight: bold;
+}
