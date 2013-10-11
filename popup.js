@@ -1,8 +1,44 @@
+// popup width and height
+var w = 626,
+    h = 436;
+// services for sharing
+var urlLayouts = [
+  {
+    name: 'fb',
+    url: 'http://www.facebook.com/sharer.php?s=100&p[url]=##URL##&p[title]=##TITLE##&p[summary]='
+  },
+  {
+    name: 'twitter',
+    url: 'http://twitter.com/intent/tweet?url=##URL##&text=##TITLE##'
+  },
+  {
+    name: 'gplus',
+    url: 'https://plus.google.com/share?url=##URL##&text=##TITLE##'
+  },
+  {
+    name: 'gmail',
+    url: 'http://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=&su=##TITLE##&body=##URL##'
+  }, 
+  {
+    name: 'linkedin',
+    url: 'http://www.linkedin.com/shareArticle?mini=true&ro=false&trk=bookmarklet&title=##TITLE##&url=##URL##'
+  },
+  {
+    name: 'tumblr',
+    url: 'http://www.tumblr.com/share?v=3&t=##TITLE##&u=##URL##'
+  },
+  {
+    name: 'pinterest',
+    url: 'http://pinterest.com/pin/create/button/?url=##URL##'
+  }
+];
+
+
 var forEach = Array.prototype.forEach,
 $$ = document.querySelectorAll.bind(document);
 
+
 window.onload = function(){
-  console.log('popup load');
   forEach.call($$('.js-share-on'), function(v) {
     v.addEventListener('click', function(e) {
       if (v.classList.contains('yes')) {
@@ -29,67 +65,21 @@ window.onload = function(){
       });
     });
   });
-
-
-
 };
 
 var sharer = {};
-
-sharer.fb = function (url, newPageTitle) {
-  var destUrl = '';
-  destUrl += 'http://www.facebook.com/sharer.php?s=100';
-  destUrl += '&p[url]=' + encodeURIComponent(url);
-  destUrl += '&p[title]='+ encodeURIComponent(newPageTitle);
-  destUrl += '&p[summary]=';
-  window.open(destUrl, 'facebook-share-dialog', 'width=626,height=436');
-  window.close();
-};
-
-sharer.twitter = function (url, newPageTitle) {
-  var destUrl = '';
-  destUrl += 'http://twitter.com/intent/tweet?';
-  destUrl += 'url=' + encodeURIComponent(url);
-  destUrl += '&text='+ encodeURIComponent(newPageTitle);
-  window.open(destUrl, 'twitter-share-dialog', 'width=626,height=436');
-  window.close();
-};
-
-sharer.gplus = function (url, newPageTitle) {
-  var destUrl = 'https://plus.google.com/share?url=';
-  destUrl += encodeURIComponent(url);
-  destUrl += '&text='+ encodeURIComponent(newPageTitle);
-  window.open(destUrl, 'gplus-share-dialog', 'width=626,height=436');
-  window.close();
-};
-
-sharer.gmail = function (url, newPageTitle) {
-  var destUrl = 'http://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=&su=';
-  destUrl +=  encodeURIComponent(newPageTitle);
-  destUrl += '&body=' + encodeURIComponent(url);
-  window.open(destUrl, 'gplus-share-dialog', 'width=626,height=436');
-  window.close();
-};
-
-sharer.linkedin = function (url, newPageTitle) {
-  var destUrl = 'http://www.linkedin.com/shareArticle?mini=true&ro=false&trk=bookmarklet&title=';
-  destUrl +=  encodeURIComponent(newPageTitle);
-  destUrl += '&url=' + encodeURIComponent(url);
-  window.open(destUrl, 'gplus-share-dialog', 'width=626,height=436');
-  window.close();
-};
-  
-sharer.tumblr = function (url, newPageTitle) {
-  var destUrl = 'http://www.tumblr.com/share?v=3&t=';
-  destUrl +=  encodeURIComponent(newPageTitle);
-  destUrl += '&u=' + encodeURIComponent(url);
-  window.open(destUrl, 'gplus-share-dialog', 'width=626,height=436');
-  window.close();
-};
-sharer.pinterest = function (url, newPageTitle) {
-  var destUrl = 'http://pinterest.com/pin/create/button/?url=';
-  destUrl += '' + encodeURIComponent(url);
-  window.open(destUrl, 'gplus-share-dialog', 'width=626,height=436');
-  window.close();
-};
-  
+var l = urlLayouts.length;
+var i;
+var service;
+var popupOptions = 'width=' + w + ',height=' + h;
+for (i = 0  ; i  < l ; i++) {
+  service = urlLayouts[i];
+  sharer[service.name] = (function(service){
+    return function(url, pageTitle) {
+      url = service.url.replace(/##URL##/, encodeURIComponent(url));
+      url = url.replace(/##TITLE##/, encodeURIComponent(pageTitle));
+      window.open(url, service.name, popupOptions);
+      window.close();
+    };
+  })(service);
+}
