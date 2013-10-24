@@ -1,6 +1,6 @@
 {
   "name": "Easy Share",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Share the current link on: Twitter, Facebook Google+, Pinterest, Linkedin, Tumblr or Gmail. Just that simple.",
   "icons": { "128": "icon.png" },
   "background": { "scripts": ["background.js"] },
