@@ -36,26 +36,51 @@ var urlLayouts = [
 
 var forEach = Array.prototype.forEach,
 $$ = document.querySelectorAll.bind(document);
+var kSelected = 'last-share-services';
 
+function saveSelected() {
+  var selected = [];
+  forEach.call($$('.js-share-on'), function(v) {
+      if (v.classList.contains('yes')) {
+        selected.push(v.getAttribute('data-sharer'));
+      }
+  });
+  localStorage[kSelected] = JSON.stringify(selected);
+}
+
+function loadSelected() {
+  if (localStorage[kSelected]) {
+    return JSON.parse(localStorage[kSelected]);
+  }
+  return false;
+}
 
 window.onload = function(){
+  var lastSelected = loadSelected();
   forEach.call($$('.js-share-on'), function(v) {
+    if (lastSelected && lastSelected.indexOf(v.getAttribute('data-sharer')) > -1) {
+      v.classList.add('yes');
+    }
     v.addEventListener('click', function(e) {
       if (v.classList.contains('yes')) {
         v.classList.remove('yes');
       } else {
         v.classList.add('yes');
       }
-      
+      saveSelected();
     }, false);
   });
+    
+
+
+  
 
   chrome.runtime.getBackgroundPage(function (background){
     var tab = background.selectedTab;
     var url = tab.url;
     document.getElementById('url').value = url;
     document.getElementById('pageTitle').value = tab.title;
-    document.getElementById('shareNow').addEventListener('click', function(e){
+    document.getElementById('shareNow').addEventListener('click', function(e) {
       var newUrl = document.getElementById('url').value;
       var newPageTitle = document.getElementById('pageTitle').value;
       forEach.call($$('.js-share-on'), function(v) {
@@ -63,6 +88,7 @@ window.onload = function(){
           sharer[v.getAttribute('data-sharer')](newUrl, newPageTitle);
         }
       });
+      
     });
   });
 };
