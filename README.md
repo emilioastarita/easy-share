@@ -22,3 +22,12 @@ Easy Share was originally hacked in [Cloudymedia](http://www.cloudymedia.com/eas
 * Pinterest
 
 If you are interested in any other service please add an issue in the GitHub tracker or just make a pull request.
+
+
+## Hire Me
+
+[![Hire Me](https://cloud.githubusercontent.com/assets/281727/21596105/2a40bb42-d115-11e6-90d0-ad9ef038ed49.png)](https://www.workana.com/freelancer/f0ab002c9e54606975b40ea2ce370987)
+
+
+
+
